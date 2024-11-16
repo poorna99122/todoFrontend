@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, Subject } from 'rxjs';
+import { throwError } from 'rxjs';
 
 export interface ToDo {
   id: number;
@@ -12,12 +13,24 @@ export interface ToDo {
   providedIn: 'root',
 })
 export class TodoService {
-  private apiUrl = 'http://localhost:8080/api/todos';
+  private todoAddedSource = new Subject<void>();
+  todoAdded$ = this.todoAddedSource.asObservable();
+  private apiUrl = '/api/todos';
 
   constructor(private http: HttpClient) {}
 
+   // Method to emit the event
+   notifyTodoAdded() {
+    this.todoAddedSource.next();
+  }
+
   getTodos(): Observable<ToDo[]> {
-    return this.http.get<ToDo[]>(this.apiUrl);
+    return this.http.get<ToDo[]>(this.apiUrl).pipe(
+      catchError((error) => {
+        console.error('Error occurred while fetching todos', error);
+        return throwError(error); // rethrow the error or handle it as needed
+      })
+    );
   }
 
   createTodo(todo: ToDo): Observable<ToDo> {

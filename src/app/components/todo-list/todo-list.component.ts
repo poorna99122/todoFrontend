@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ToDo, TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -8,16 +9,23 @@ import { ToDo, TodoService } from 'src/app/services/todo.service';
 })
 export class TodoListComponent {
 
+  private subscription!: Subscription;
+
   todos: ToDo[] = [];
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.loadTodos();
+      // Subscribe to the observable for new ToDo notifications
+      this.subscription = this.todoService.todoAdded$.subscribe(() => {
+        this.loadTodos();
+      });
   }
 
   loadTodos(): void {
     this.todoService.getTodos().subscribe(data => this.todos = data);
+    console.log("TodoList",this.todos)
   }
 
   toggleCompletion(todo: ToDo): void {

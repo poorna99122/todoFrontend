@@ -30,6 +30,7 @@ export class TodoFormComponent implements OnInit{
         completed: this.todoForm.value.completed
       };
       this.todoService.createTodo(newTodo).subscribe(() => {
+        this.todoService.notifyTodoAdded(); // Notify that a new ToDo is added
         this.todoForm?.reset(); // Reset form after submission
       });
     }

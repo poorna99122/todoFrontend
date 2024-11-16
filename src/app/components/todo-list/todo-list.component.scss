@@ -27,12 +27,63 @@
         .title {
           width: 30%;
         }
+        .modify{
+                background-color: #007bb5;
+        }
         .status {
           width: 30%;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 5px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+  
+            &:hover {
+              background-color: #d32f2f;
+            }
+  
+            &:first-child {
+              background-color: #008cba;
+  
+              &:hover {
+                background-color: #007bb5;
+              }
+            
+          }
         }
 
         .delete {
           width: 30%;
+
+          width: 30%;
+          padding: 5px 10px;
+          font-size: 14px;
+          cursor: pointer;
+          margin-left: 5px;
+          background-color: #913bec;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #913bec;
+          }
+
+          &:first-child {
+            background-color: #913bec;
+
+
+            &:hover {
+            background-color: #913bec;
+
+            }
+          
+        }
         }
 
         &:last-child {
@@ -46,29 +97,7 @@
           }
         }
 
-        button {
-          padding: 5px 10px;
-          font-size: 14px;
-          cursor: pointer;
-          margin-left: 5px;
-          background-color: #f44336;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          transition: background-color 0.3s;
 
-          &:hover {
-            background-color: #d32f2f;
-          }
-
-          &:first-child {
-            background-color: #008cba;
-
-            &:hover {
-              background-color: #007bb5;
-            }
-          }
-        }
       }
     }
   }

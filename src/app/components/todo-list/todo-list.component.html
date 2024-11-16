@@ -1,0 +1,12 @@
+<!-- todo-list.component.html -->
+<div class="todo-list">
+    <h3>ToDo List</h3>
+    <ul>
+      <li *ngFor="let todo of todos">
+        <span [class.completed]="todo.completed">{{ todo.title }}</span>
+        <button (click)="toggleCompletion(todo)">Toggle Complete</button>
+        <button (click)="deleteTodo(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

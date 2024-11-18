@@ -2,10 +2,14 @@
 
 *{
   
-    font-family: 'Poppins', sans-serif;
+    // font-family: 'Poppins', sans-serif;
     font-weight: 700; 
-  
-  
+    
+ 
+}
+
+button {
+  padding: 2px;
 }
 
 .todo-list {
@@ -14,6 +18,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .mainTitle{
+    h3{
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 28px;
+      font-family: cursive;
+      letter-spacing: .009375em;
+      margin: 0 0 16px;
+    }
+  }
 
   .list {
     width: 50%;
@@ -42,14 +56,18 @@
           border-radius: 5px;
           margin: 10px;
           padding: 5px;
-      
-     
+        }
+        .update {
+          background-color: #007bb5;
+          font-size: 12px;
+          padding: 6px;
         }
         .modify{
                 background-color: #007bb5;
+                font-size: 12px;
+                padding: 6px;
         }
         .status {
-          width: 30%;
             padding: 5px 10px;
             font-size: 14px;
             cursor: pointer;
@@ -75,11 +93,8 @@
         }
 
         .delete {
-          width: 30%;
-
-          width: 30%;
-          padding: 5px 10px;
           font-size: 14px;
+          height: 30px;
           cursor: pointer;
           margin-left: 5px;
           background-color: #913bec;
@@ -87,6 +102,10 @@
           border: none;
           border-radius: 4px;
           transition: background-color 0.3s;
+          mat-icon {
+            font-size: 15px;
+            margin-top: 5px;
+          }
 
           &:hover {
             background-color: #913bec;

@@ -1,7 +1,7 @@
 <!-- todo-list.component.html -->
 
 <div class="todo-list">
-  <div class="title" *ngIf="todos.length">
+  <div class="mainTitle" *ngIf="todos.length">
     <h3>ToDo List</h3>
   </div>
 
@@ -26,24 +26,33 @@
           class="modify btn btn-primary"
           (click)="modify(todo)"
         >
+        <span>
           Modify
+        </span>
+          
         </button>
         <button
           *ngIf="todo.isEditing"
           class="update btn btn-primary"
           (click)="updateTodo(todo)"
         >
-          Update
+          <span>
+            Update
+          </span>
         </button>
         <button
           class="status btn btn-primary"
           [ngStyle]="{ 'background-color': todo.completed ? 'red' : 'green' }"
           (click)="toggleCompletion(todo)"
         >
-          {{ todo.completed ? "Mark as Incomplete" : "Mark as Complete" }}
+          <span>{{ todo.completed ? "Incomplete" : "Complete" }}</span>
         </button>
-        <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
+        <button class="delete" (click)="deleteTodo(todo.id)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
       </li>
     </ul>
   </div>
 </div>
+
+

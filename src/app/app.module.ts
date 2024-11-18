@@ -10,6 +10,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from  '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { TodoMainComponent } from './components/todo-main/todo-main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -26,7 +28,9 @@ import { TodoMainComponent } from './components/todo-main/todo-main.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [
     {

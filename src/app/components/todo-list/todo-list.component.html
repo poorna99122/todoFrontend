@@ -1,26 +1,49 @@
 <!-- todo-list.component.html -->
 
 <div class="todo-list">
-    <div class="title" *ngIf="todos.length">
-        <h3>ToDo List</h3>
-    </div>
-
-    <div class="list">
-        <ul>
-            <li *ngFor="let todo of todos.reverse(); let i = index">
-              <span class="id">{{ i + 1 }}</span>
-              <span *ngIf="!todo.isEditing" class="title" [class.completed]="todo.completed">{{ todo.title }}</span>
-              <input *ngIf="todo.isEditing" class="title" type="text"  [(ngModel)]="todo.title" >
-              <button *ngIf="!todo.isEditing" class="modify btn btn-primary" (click)="modify(todo)">Modify</button>
-              <button *ngIf="todo.isEditing" class="update btn btn-primary" (click)="updateTodo(todo)">Update</button>
-              <button class="status btn btn-primary" [ngStyle]="{'background-color' : todo.completed ? 'red':'green'}" (click)="toggleCompletion(todo)">
-                  {{ todo.completed ? 'Mark as Incomplete' : 'Mark as Complete' }}
-              </button>
-              <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
-            </li>
-          </ul>
-    </div>
-
-  
+  <div class="title" *ngIf="todos.length">
+    <h3>ToDo List</h3>
   </div>
-  
+
+  <div class="list">
+    <ul>
+      <li *ngFor="let todo of todos.reverse(); let i = index">
+        <span class="id">{{ i + 1 }}</span>
+        <span
+          *ngIf="!todo.isEditing"
+          class="title"
+          [class.completed]="todo.completed"
+          >{{ todo.title }}</span
+        >
+        <input
+          *ngIf="todo.isEditing"
+          class="title"
+          type="text"
+          [(ngModel)]="todo.title"
+        />
+        <button
+          *ngIf="!todo.isEditing"
+          class="modify btn btn-primary"
+          (click)="modify(todo)"
+        >
+          Modify
+        </button>
+        <button
+          *ngIf="todo.isEditing"
+          class="update btn btn-primary"
+          (click)="updateTodo(todo)"
+        >
+          Update
+        </button>
+        <button
+          class="status btn btn-primary"
+          [ngStyle]="{ 'background-color': todo.completed ? 'red' : 'green' }"
+          (click)="toggleCompletion(todo)"
+        >
+          {{ todo.completed ? "Mark as Incomplete" : "Mark as Complete" }}
+        </button>
+        <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

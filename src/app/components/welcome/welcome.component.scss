@@ -1,20 +1,49 @@
+@import "/src/assets/styles/colors.scss";
 .main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: $background-color;
+
+  .subMain {
     display: flex;
     flex-direction: column;
-    width: 100%;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
-    .title{
-        font-size: 24px;
-        p{
+    padding: 40px;
+    background: #eafbf5;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        font-family: cursive;
+        font-weight: 900;
+        font-size: 50px;
+      }
+    }
 
-        }
-        .desc{
-
-        }
+    .desc {
+      font-family: cursive;
+      font-weight: 400;
+      font-size: 20px;
     }
     .startButton {
-        
+      button {
+        background: $primary-color;
+        border: none;
+      }
+      span {
+        font-family: "Sour Gummy", sans-serif;
+        padding: 0px !important;
+      }
     }
+  }
 }

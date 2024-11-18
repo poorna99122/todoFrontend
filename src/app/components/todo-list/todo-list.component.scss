@@ -5,6 +5,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 700; 
   
+  
 }
 
 .todo-list {
@@ -31,8 +32,17 @@
           width: 10%;
         }
 
+        input[type="checkbox"]:focus {
+          outline: none;
+          border: 2px solid #007bff; /* Add a custom border */
+      }
         .title {
           width: 30%;
+          border: none;
+          border-radius: 5px;
+          margin: 10px;
+          padding: 5px;
+      
      
         }
         .modify{

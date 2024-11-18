@@ -1,5 +1,12 @@
 // todo-list.component.scss
 
+*{
+  
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700; 
+  
+}
+
 .todo-list {
   width: 100%;
   display: flex;
@@ -26,6 +33,7 @@
 
         .title {
           width: 30%;
+     
         }
         .modify{
                 background-color: #007bb5;

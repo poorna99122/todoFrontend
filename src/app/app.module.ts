@@ -8,13 +8,18 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from  '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { TodoMainComponent } from './components/todo-main/todo-main.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoFormComponent,
-    TodoListComponent
+    TodoListComponent,
+    WelcomeComponent,
+    TodoMainComponent
   ],
   imports: [
     BrowserModule,

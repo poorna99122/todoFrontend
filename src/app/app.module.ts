@@ -12,7 +12,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { TodoMainComponent } from './components/todo-main/todo-main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { ToDo, TodoService } from 'src/app/services/todo.service';
 import { debounceTime, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,14 +14,17 @@ export class TodoListComponent {
   public updated: boolean = true;
 
   todos: ToDo[] = [];
+  isLoading$ = this.spinnerService.isLoading$;
 
- 
   private titleChangeSubject = new Subject<any>(); // Subject to emit title changes
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private spinnerService: SpinnerService
+  ) {}
 
   ngOnInit(): void {
-    this.todos = [{id:0,title:'',completed:false,isEditing:false}]
+    this.todos = [{ id: 0, title: '', completed: false, isEditing: false }];
     this.loadTodos();
     // Subscribe to the observable for new ToDo notifications
     this.subscription = this.todoService.todoAdded$.subscribe(() => {
@@ -29,8 +33,17 @@ export class TodoListComponent {
   }
 
   loadTodos(): void {
-    this.todoService.getTodos().subscribe((data) => (this.todos = data));
-    console.log('TodoList', this.todos);
+    this.spinnerService.show();
+    this.todoService.getTodos().subscribe(
+      (data) => {
+        this.spinnerService.hide();
+        this.todos = data;
+      },
+      (error) => {
+        this.spinnerService.hide();
+        console.error('Error fetching todos:', error);
+      }
+    );
   }
 
   toggleCompletion(todo: ToDo): void {
@@ -39,14 +52,25 @@ export class TodoListComponent {
   }
 
   updateTodo(todo: ToDo) {
-    this.todoService.updateTodo(todo).subscribe(() => this.loadTodos());
+    this.spinnerService.show();
+    this.todoService.updateTodo(todo).subscribe((data) => {
+      this.spinnerService.hide();
+      this.loadTodos()
+    }, (error)=>{
+      this.spinnerService.hide();
+      console.error('Error fetching todos:', error);
+    });
     todo.isEditing = false;
   }
 
-
-
   deleteTodo(id: number): void {
-    this.todoService.deleteTodoById(id).subscribe(() => this.loadTodos());
+    this.todoService.deleteTodoById(id).subscribe((data) => {
+      this.spinnerService.hide();
+      this.loadTodos();
+    },(error)=>{
+      this.spinnerService.hide();
+      console.error('Error fetching todos:', error);
+    });
   }
 
   modify(todo: any) {
